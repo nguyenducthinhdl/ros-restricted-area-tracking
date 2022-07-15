@@ -1,0 +1,8 @@
+restricted_area:
+
+  polygon: [387, 428, 929, 360, 1032, 585, 695, 663, 341, 571]
+
+tracking:
+  max_age: 2
+  min_hists: 3
+  iou_thresh: 0.4
