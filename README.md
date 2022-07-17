@@ -2,6 +2,11 @@
 
 ## Overview
 
+Real-time tracking pedestrians who move into Restricted Area (Green Polygon)
+
+- Yellow Label: Tracking ID, the pedestrian is moving outside of restricted area
+- Red Label: Tracking ID, the pedestrian is moving inside of restricted area
+
 **Author: [Nguyen Duc Thinh (Leona)](https://www.linkedin.com/in/nguyenducthinhdl/), nguyenducthinhdl@gmail.com**
 
 ![Pedestrian restricted image](doc/restricted_area.png)
@@ -21,9 +26,9 @@ This software is built on the Robotic Operating System ([ROS]), which needs to b
 
 Avoid incompatibility issues with this dockerfile that will work out of the box. Docker image includes ubuntu 18.04, ROS melodic, CUDA 11.7. Docker image will install darknet_ros and the usb_cam package.
 
-Install docker here: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/
+Install docker here: <https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/>
 
-Install nvidia-docker here: https://github.com/NVIDIA/nvidia-docker
+Install nvidia-docker here: <https://github.com/NVIDIA/nvidia-docker>
 
 Build docker image with default mode and data:
 
@@ -52,13 +57,14 @@ This means that you need to check the compute capability (version) of your GPU. 
 
     -O3 -gencode arch=compute_62,code=sm_62
 
-
 ### Result
 
 I tried only on local machine:
+
 - Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
 - GP107M [GeForce GTX 1050 Mobile] 2GB VRAM
 
 The performance result:
-- CPU (Without Cuda): 0.1 FPS
-- GPU mode: 12-20 FPS
+
+- CPU (Without Cuda): 0.8 FPS
+- GPU mode: 12-20 FPS (Need to optimize by gpu architecture)
