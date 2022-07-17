@@ -39,23 +39,23 @@ Install nvidia-docker here: <https://github.com/NVIDIA/nvidia-docker>
 
 Build docker image with default mode and data:
 
-`docker build -t ros-yolo3-restricted-area .`
+- `docker build -t ros-yolo3-restricted-area .`
 
-`./script/test_script.bash`
+- `./script/test_script.bash`
 
 - Wait several minutes for starting ros applications, building ...
 - You can try log to runtime container to view logs:
   - Get container id: `docker ps | grep ros-yolo3-restricted-area`
-  - View logs `docker <container-id>`
+  - View logs `docker logs <container-id>`
 - Finally, open `http://localhost:8080/` to show all avaiable toptic channels
-- `http://localhost:8080/stream_viewer?topic=/videofile/image_raw` for raw video source
-- `http://localhost:8080/stream_viewer?topic=/darknet_ros/detection_image`
+  - `http://localhost:8080/stream_viewer?topic=/videofile/image_raw` for raw video source
+  - `http://localhost:8080/stream_viewer?topic=/darknet_ros/detection_image` for ẹnjoy
 
 Build docker image with bash node:
 
-`docker build -t ros-yolo3-restricted-area .`
-`./script/bash_script.bash`
-`/script/test_script.bash` (inside the docker container)
+- `docker build -t ros-yolo3-restricted-area .`
+- `./script/bash_script.bash`
+- `/script/test_script.bash` (inside the docker container)
 
 #### Note
 
