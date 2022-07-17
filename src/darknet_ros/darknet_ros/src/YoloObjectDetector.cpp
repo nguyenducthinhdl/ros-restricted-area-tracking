@@ -400,11 +400,12 @@ void YoloObjectDetector::tracking_draw(image im, detection *dets, int num, float
   }
 
   // Draw stricted area
-  for (int i = 0; i < contour_.size() - 1; ++i) {
-    plotLineWidth(im, contour_[i].x, contour_[i].y, contour_[i + 1].x, contour_[i + 1].y, 0.0f, 1.0f, 0, 3);
+  if (contour_.size() > 0) {
+    for (int i = 0; i < contour_.size() - 1; ++i) {
+      plotLineWidth(im, contour_[i].x, contour_[i].y, contour_[i + 1].x, contour_[i + 1].y, 0.0f, 1.0f, 0, 3);
+    }
+    plotLineWidth(im, contour_[0].x, contour_[0].y, contour_.back().x, contour_.back().y, 0.0f, 1.0f, 0, 3);
   }
-  plotLineWidth(im, contour_[0].x, contour_[0].y, contour_.back().x, contour_.back().y, 0.0f, 1.0f, 0, 3);
-  
 
   // Draw the pedestrian and labeling
   cv::Mat bboxesPost = sort_->update(bboxesDet);
