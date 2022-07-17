@@ -13,6 +13,13 @@ Real-time tracking pedestrians who move into Restricted Area (Green Polygon)
 
 I used only person class for pedestrian detection.
 
+## Feature
+
+- Realtime tracking, detection, labeling pedestrians who move into Restricted Area
+- Integrated with YOLO 3 model.
+- Integrated with WebRTC protocol for video streaming via web_video_server ros package
+- Nivida Containerization (Tested on GTX 1050)
+
 ## Installation
 
 ### Dependencies
@@ -36,10 +43,13 @@ Build docker image with default mode and data:
 
 `./script/test_script.bash`
 
-- Wait several minutes for starting ros applications, building
+- Wait several minutes for starting ros applications, building ...
 - You can try log to runtime container to view logs:
   - Get container id: `docker ps | grep ros-yolo3-restricted-area`
   - View logs `docker <container-id>`
+- Finally, open `http://localhost:8080/` to show all avaiable toptic channels
+- `http://localhost:8080/stream_viewer?topic=/videofile/image_raw` for raw video source
+- `http://localhost:8080/stream_viewer?topic=/darknet_ros/detection_image`
 
 Build docker image with bash node:
 
@@ -64,7 +74,7 @@ I tried only on local machine:
 - Intel(R) Core(TM) i7-7700HQ CPU @ 2.80GHz
 - GP107M [GeForce GTX 1050 Mobile] 2GB VRAM
 
-The performance result:
+The performance result with HD resolution, 40 moving objects:
 
 - CPU (Without Cuda): 0.8 FPS
 - GPU mode: 12-20 FPS (Need to optimize by gpu architecture)
